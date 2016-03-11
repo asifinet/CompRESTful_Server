@@ -14,42 +14,31 @@
 		<jdk.version>1.7</jdk.version>
 		<context.path>SpringRestCrud</context.path>
 	</properties>
-	 <build>
-    <plugins>
-      <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>2.5.1</version>
-   
-	<configuration>
-        <source>1.8</source>
-        <target>1.8</target>
-        <optimize>true</optimize>
-        <debug>true</debug>
-  <webXml>src\main\webapp\WEB-INF\web.xml</webXml>   
-   </configuration>
+	<build>
+		<finalName>${pom.artifactId}</finalName>
+		<plugins>
+			<plugin>
+  				<groupId>org.apache.maven.plugins</groupId>
+ 					 <artifactId>maven-dependency-plugin</artifactId>
+ 						 <version>2.4</version>
+  						<executions>
+  					  <execution>
+    			  <id>copy-dependencies</id>
+     	 <phase>package</phase>
+      <goals><goal>copy-dependencies</goal></goals>
+    </execution>
+  </executions>
 </plugin>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-dependency-plugin</artifactId>
-        <version>2.4</version>
-        <executions>
-          <execution>
-            <id>copy-dependencies</id>
-            <phase>package</phase>
-            <goals><goal>copy-dependencies</goal></goals>
-          </execution>
-        </executions>
-      </plugin>
-    </plugins>
-  </build>
+		</plugins>
+	</build>
 	<dependencies>
-       <dependency>
-      <groupId>com.heroku.sdk</groupId>
-      <artifactId>heroku-jdbc</artifactId>
-      <version>0.1.1</version>
-    </dependency>
- 		<dependency>
+	<dependency>
+	<groupId>org.springframework.boot</groupId>
+	<artifactId>spring-boot</artifactId>
+	<version>1.0.0.RELEASE</version>
+</dependency>
+	
+		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>${log4j.version}</version>
@@ -57,6 +46,11 @@
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-orm</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-jdbc</artifactId>
 			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
